@@ -4,10 +4,10 @@ import java.rmi.RemoteException;
 // Creating Remote interface for our application 
 public interface Calculator extends Remote {  
 
-    boolean createNewClientID(int clientID)
+    boolean NewClientID(int clientID)
     throws java.rmi.RemoteException;
 
-    void createNewClientStack(int clientID)
+    void createStack(int clientID)
     throws java.rmi.RemoteException;
 
     void pushValue(int val, int clientID)

@@ -8,7 +8,7 @@ public class CalculatorImplementation implements Calculator{
     private Map<Integer, Stack<Integer>> clientStacks = new HashMap<>();
 
     // Check if clientID is unique
-    public boolean createNewClientID(int clientID) throws RemoteException {
+    public boolean NewClientID(int clientID) throws RemoteException {
         if (clientStacks.containsKey(clientID)) {
             return false;
         }
@@ -17,9 +17,7 @@ public class CalculatorImplementation implements Calculator{
     }
 
     // Create a new stack for the client
-    public void createNewClientStack(int clientID) throws RemoteException {
-        
-       
+    public void createStack(int clientID) throws RemoteException {   
         Stack<Integer> newStack = new Stack<>();
         clientStacks.put(clientID, newStack);
     }
@@ -160,19 +158,22 @@ public class CalculatorImplementation implements Calculator{
         }
         return val;
     }
-
+    // Define function checkforZero that checks if the there is 0 in the stack and returns true if it exists
     public boolean checkforZero(int clientID) throws RemoteException {
         System.out.println("Checking if client stack has value 0");
-        // If the client stack contains 0, remove all values from the stack
         if (clientStacks.get(clientID).contains(0)) {
             return true;
         }
         return false;
     }
+
+    // Define function invalidOperator which returns true if the operator is invalid - it is called only when the operator is invalid
     public boolean invalidOperator(int clientID) throws RemoteException {
         
         return true;
     }
+
+    // Defind function stackSize that returns the size of the stack.
     public int stackSize(int clientID) throws RemoteException {
         return clientStacks.get(clientID).size();
     }
