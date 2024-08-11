@@ -3,18 +3,34 @@ import java.rmi.RemoteException;
 
 // Creating Remote interface for our application 
 public interface Calculator extends Remote {  
-    void pushValue(int val)
+
+    boolean createNewClientID(int clientID)
+    throws java.rmi.RemoteException;
+
+    void createNewClientStack(int clientID)
+    throws java.rmi.RemoteException;
+
+    void pushValue(int val, int clientID)
     throws java.rmi.RemoteException; 
 
-    void pushOperation(String operator) 
+    void pushOperation(String operator, int clientID) 
     throws java.rmi.RemoteException; 
 
-    int pop()
+    int pop(int clientID)
     throws java.rmi.RemoteException; 
 
-    boolean isEmpty()
+    int stackSize(int clientID)
     throws java.rmi.RemoteException; 
 
-    int delayPop(int millis)
+    boolean isEmpty(int clientID)
+    throws java.rmi.RemoteException; 
+
+    boolean checkforZero(int clientID)
+    throws java.rmi.RemoteException; 
+
+    boolean  invalidOperator(int clientID)
+    throws java.rmi.RemoteException; 
+
+    int delayPop(int millis, int clientID)
     throws java.rmi.RemoteException; 
 } 
